@@ -92,5 +92,97 @@ def verify(list):
 sortme = [ 43, 7, 3, 222, 9, 14, 12, 6]
 l = merge_sort(sortme)
 # print(l)
-print(verify(sortme))
-print(verify(l))
+# print(verify(sortme))
+# print(verify(l))
+
+###############################
+# MERGE SORT - LINKED LIST
+#------------------
+from lists import LinkedList
+
+def merge_sort_LL(linked_list):
+    """
+    Returns sorted linked list
+    """
+    if linked_list.size() == 1:
+        return linked_list
+    elif linked_list.head is None:
+        return linked_list
+    
+    left_half, right_half = split_LL(linked_list)
+    left = merge_sort_LL(left_half)
+    right = merge_sort_LL(right_half)
+
+    return merge_LL(left, right)
+
+def split_LL(linked_list):
+
+    if linked_list == None or linked_list.head == None:
+        left_half = linked_list
+        right_half = None
+
+        return left_half, right_half
+    else:
+        size = linked_list.size()
+        mid = size//2
+        mid_node = linked_list.value_at_index(mid-1)
+
+        left_half = linked_list
+        right_half = LinkedList()
+        right_half.head = mid_node.next_node
+        mid_node.next_node = None
+
+        return left_half, right_half
+    
+def merge_LL(left, right):
+    """
+    Merges two LL sorting by data in nodes
+    Returns new merged list
+    """
+    # New LL to take L,R nodes
+    merged = LinkedList()
+    # Add fake head to be discarded later
+    merged.add(0)
+    current = merged.head
+    left_head = left.head
+    right_head = right.head
+    # Iterate over L, R until tail nodes
+    while left_head or right_head:
+        # If heads are None then past tail of each list, add remaining nodes to list
+        if left_head is None:
+            current.next_node = right_head
+            right_head = right_head.next_node
+        elif right_head is None:
+            current.next_node = left_head
+            left_head = left_head.next_node
+        else:
+            # Not at either tail node
+            left_data = left_head.data
+            right_data = right_head.data
+            # Comparison operations
+            if left_data < right_data:
+                current.next_node = left_head
+                left_head = left_head.next_node
+            else:
+                current.next_node = right_head
+                right_head = right_head.next_node
+        current = current.next_node
+    # Discard fake head
+    head = merged.head.next_node
+    merged.head = head
+    return merged
+        
+def verify_LL():
+    pass
+
+LL = LinkedList()
+LL.add(1)
+LL.add(15)
+LL.add(24)
+LL.add(10)
+LL.add(67)
+LL.add(8)
+LL.add(123)
+print(LL)
+sorted_LL = merge_sort_LL(LL)
+print(sorted_LL)
