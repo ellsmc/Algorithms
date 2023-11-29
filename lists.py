@@ -19,6 +19,21 @@ python -i lists.py
 >>> l.head = N1
 >>> l.size()
 1
+
+>>> l2 = LinkedList()
+>>> l2.add(1)
+>>> l2.size()
+1
+>>> l2.add(2)
+>>> l2.size()
+2
+
+>>> l3 = LinkedList()
+>>> l3.add(1)
+>>> l3.add(2)
+>>> l3.add(3)
+>>> l3
+[Head: 3]-> [2]-> [Tail: 1]
 """
 
 
@@ -62,3 +77,32 @@ class LinkedList:
             count += 1
             current = current.next_node
         return count
+    
+    def add(self, data):
+        """
+        Adds new node to head of list
+        Constant time - best case
+        """
+        new_node = Node(data)
+        new_node.next_node = self.head
+        self.head = new_node
+
+    def __repr__(self):
+        """
+        Returns string representation of list
+        O(n) time
+        """
+        nodes = []
+        current = self.head
+
+        # As long as current is not None
+        while current:
+            if current is self.head:
+                nodes.append("[Head: %s]" % current.data)
+            elif current.next_node is None:
+                nodes.append("[Tail: %s]" % current.data)
+            else:
+                nodes.append("[%s]" % current.data)
+
+            current = current.next_node
+        return '-> '.join(nodes)
