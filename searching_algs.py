@@ -21,7 +21,7 @@ result = linear_search(numbers, 8)
 verify(result)
 
 # Binary search
-# O(log n) complexity (Logarithmic)
+# O(log n) complexity (Logarithmic), constant space
 def binary_search(list, target):
 	first = 0
 	last = len(list) - 1
@@ -41,7 +41,7 @@ result = binary_search(numbers, 5)
 verify(result)
 
 # Recursive Binary search
-
+#  Time O(log n)
 def recursive_binary_search(list, target):
 	if len(list) == 0:
 		return False
