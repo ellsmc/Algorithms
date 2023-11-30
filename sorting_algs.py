@@ -187,14 +187,13 @@ print(LL)
 sorted_LL = merge_sort_LL(LL)
 print(sorted_LL)
 
-
 #______________________________________________________________________________________________________________________________________________________
 # SELECTION SORT
 #------------------
 import sys
 from load import load_numbers
 
-numbers = load_numbers(sys.argv[1])
+# numbers = load_numbers(sys.argv[1])
 # numbers = [4, 68, 90, 43, 3 ,7, 8, 9]
 
 def index_of_min(values):
@@ -213,9 +212,41 @@ def selection_sort(values):
         # print("%-25s %-25s" % (values, sorted_list))
     return sorted_list
 
-print(selection_sort(numbers))
+#print(selection_sort(numbers))
 
+"""
+terminal> time python sorting_algs.py unsorted_nums.txt
+0.00user 0.01system 0:00.09elapsed 15%CPU (0avgtext+0avgdata 5352maxresident)k
+0inputs+0outputs (1389major+0minor)pagefaults 0swaps
 
+user+sys to evaluate runtime
+"""
+
+#______________________________________________________________________________________________________________________________________________________
+# QUICK SORT
+#------------------
+
+numbers_small = [1, 5, 7, 24, 46, 96, 45, 8, 5, 432, 654, 76, 32, 65, 13, 75]
+
+def quick_sort(values):
+    if len(values) <= 1:
+        return values
+    less_than_pivot = []
+    greater_than_pivot = []
+    pivot = values[0]
+    for value in values[1:]:
+        if value <= pivot:
+            less_than_pivot.append(value)
+        else:
+            greater_than_pivot.append(value)
+            # print("%15s %1s %-15s" % (less_than_pivot, pivot, greater_than_pivot))
+    return quick_sort(less_than_pivot) + [pivot] + quick_sort(greater_than_pivot)
+
+print(quick_sort(numbers_small))
+
+#______________________________________________________________________________________________________________________________________________________
+#  SORT
+#------------------
 
 
 #______________________________________________________________________________________________________________________________________________________
