@@ -97,6 +97,7 @@ l = merge_sort(sortme)
 
 ###############################
 # MERGE SORT - LINKED LIST
+# O(n log n)
 #------------------
 from lists import LinkedList
 
@@ -187,8 +188,40 @@ print(LL)
 sorted_LL = merge_sort_LL(LL)
 print(sorted_LL)
 
+
+###############################
+# MERGE SORT - RECURSIVE
+#------------------
+
+def merge_recursive(values):
+    # Base case
+    if len(values) <=1:
+        return values
+    mid_index = len(values)//2 # Floor // divides and rounds down
+    left_values = merge_recursive(values[:mid_index])
+    right_values = merge_recursive(values[mid_index:])
+    # print("%15s %-15s" % (left_values, right_values))
+    sorted = []
+    left_ind = 0
+    right_ind = 0
+    while left_ind < len(left_values) and right_ind < len(right_values):
+        if left_values[left_ind] < right_values[right_ind]:
+            sorted.append(left_values[left_ind])
+            left_ind += 1
+        else:
+            sorted.append(right_values[right_ind])
+            right_ind += 1
+    sorted += left_values[left_ind:]
+    sorted += right_values[right_ind:]
+    return sorted
+
+sorted_nums = merge_recursive(sortme)
+print("Recursive merge: ", sorted_nums)
+
+
 #______________________________________________________________________________________________________________________________________________________
 # SELECTION SORT
+# O(n2)
 #------------------
 import sys
 from load import load_numbers
@@ -224,6 +257,9 @@ user+sys to evaluate runtime
 
 #______________________________________________________________________________________________________________________________________________________
 # QUICK SORT
+# BC O(n logn)
+# WC O(n2)
+# Need to use a random pivot
 #------------------
 
 numbers_small = [1, 5, 7, 24, 46, 96, 45, 8, 5, 432, 654, 76, 32, 65, 13, 75]
