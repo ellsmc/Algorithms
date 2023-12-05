@@ -1,47 +1,3 @@
-new_list = [1, 2, 3]
-if 1 in new_list: print(True)
-# insert linear run time, constant space - every element shifted over one
-# append constant time, constant space 
-
-"""
-python -i lists.py
->>> N1 = Node(10)
->>> N1     
-<Node data: 10>
->>> N2 = Node(20)
->>> N1.next_node = N2
->>> N1.next_node
-<Node data: 20>
-"""
-""""
->>> l = LinkedList()
->>> N1 = Node(10)
->>> l.head = N1
->>> l.size()
-1
-
->>> l2 = LinkedList()
->>> l2.add(1)
->>> l2.size()
-1
->>> l2.add(2)
->>> l2.size()
-2
-
->>> l3 = LinkedList()
->>> l3.add(1)
->>> l3.add(2)
->>> l3.add(3)
->>> l3
-[Head: 3]-> [2]-> [Tail: 1]
->>> l.add(45)
->>> l.search(45)
-<Node data: 45>
->>> l
-[Head: 45]-> [3]-> [2]-> [Tail: 1]
-"""
-
-
 # Linked list
 class Node:
     """
@@ -178,3 +134,41 @@ class LinkedList:
 
             current = current.next_node
         return '-> '.join(nodes)
+    
+"""
+python -i lists.py
+>>> N1 = Node(10)
+>>> N1     
+<Node data: 10>
+>>> N2 = Node(20)
+>>> N1.next_node = N2
+>>> N1.next_node
+<Node data: 20>
+"""
+""""
+>>> l = LinkedList()
+>>> N1 = Node(10)
+>>> l.head = N1
+>>> l.size()
+1
+
+>>> l2 = LinkedList()
+>>> l2.add(1)
+>>> l2.size()
+1
+>>> l2.add(2)
+>>> l2.size()
+2
+
+>>> l3 = LinkedList()
+>>> l3.add(1)
+>>> l3.add(2)
+>>> l3.add(3)
+>>> l3
+[Head: 3]-> [2]-> [Tail: 1]
+>>> l.add(45)
+>>> l.search(45)
+<Node data: 45>
+>>> l
+[Head: 45]-> [3]-> [2]-> [Tail: 1]
+"""
