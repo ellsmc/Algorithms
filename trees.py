@@ -118,18 +118,18 @@ root.left.right = Node(5)
   / \
  4   5
 """
-
-print("Inorder traversal of binary tree: ")
+print("Depth First Search:")
+# Inorder traversal gives nodes in non-decreasing order
+print("\nInorder traversal of binary tree: ")
 traverseInorder(root)
-
 # Preorder traversal is used to create a copy of the tree
 print("\nPreorder traversal of binary tree: ")
 traversePreorder(root)
-
 # Postorder traversal is used to delete the tree
 print("\nPostorder traversal of binary tree: ")
 traversePostorder(root)
 
+print("\nBreadth First Search: ")
 # Level Order traversal
 print("\nLevel Order traversal of binary tree: ")
 traverseLevelOrder(root)
