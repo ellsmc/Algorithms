@@ -83,6 +83,28 @@ def traversePostorder(root):
         traversePostorder(root.left)
         traversePostorder(root.right)
         print(root.value, end=" "),
+
+
+# Level Order Traversal
+
+def traverseLevelOrder(root):
+    # Base case
+    if root is None:
+        return
+    # create queueu
+    queue = []
+    queue.append(root)
+    while len(queue) > 0:
+        # When node visited, pop from the queue
+        print(queue[0].value, end=" ")
+        node = queue.pop(0)
+        # Push the child nodes in the queue
+        if node.left is not None:
+            queue.append(node.left)
+        if node.right is not None:
+            queue.append(node.right)
+
+
 root = Node(1)
 root.left = Node(2)
 root.right = Node(3)
@@ -107,3 +129,7 @@ traversePreorder(root)
 # Postorder traversal is used to delete the tree
 print("\nPostorder traversal of binary tree: ")
 traversePostorder(root)
+
+# Level Order traversal
+print("\nLevel Order traversal of binary tree: ")
+traverseLevelOrder(root)
